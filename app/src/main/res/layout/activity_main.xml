@@ -25,7 +25,9 @@
                 android:fontFamily="@font/audition"
 
                 android:text="Day 1"
-                android:textSize="32dp" />
+                android:textSize="50dp"
+                android:textColor="#575757"
+                android:layout_marginTop="4dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +35,50 @@
                 android:fontFamily="@font/audition"
 
                 android:text="Audition"
-                android:textSize="54dp" />
+                android:textSize="98dp"
+                android:textColor="#575757"
+                android:layout_marginTop="-8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notoserifjp"
+
+                android:text="オーディション"
+                android:textSize="46dp"
+
+                android:layout_marginTop="-86dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="-30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/audition"
+
+                    android:text="1"
+                    android:textSize="66dp"
+
+                    android:layout_marginTop="-2dp"
+                    android:layout_marginLeft="74dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notoserifjp"
+
+                    android:text="日 目"
+                    android:textSize="30dp"
+
+                    android:layout_marginTop="0dp"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
