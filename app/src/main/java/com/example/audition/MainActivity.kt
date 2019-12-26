@@ -12,4 +12,9 @@ class MainActivity : AppCompatActivity() {
         Utility.hideSystemUI(window)
     }
 
+    override fun onStart() {
+        super.onStart()
+        Utility.hideSystemUI(window)
+    }
+
 }
