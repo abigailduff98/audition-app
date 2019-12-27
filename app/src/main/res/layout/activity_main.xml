@@ -10,85 +10,82 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbarThumbHorizontal="@null"
         android:scrollbarThumbVertical="@null"
-        android:scrollbarThumbHorizontal="@null">
+        tools:layout_editor_absoluteX="-35dp"
+        tools:layout_editor_absoluteY="172dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/dayTopTextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/audition"
 
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/audition"
                 android:text="Day 1"
+
+                android:textColor="#575757"
                 android:textSize="50dp"
-                android:textColor="#575757"
-                android:layout_marginTop="4dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.467"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/auditionTextView"
+                android:layout_width="300dp"
+                android:layout_height="106dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dayTopTextView"
+                app:srcCompat="@drawable/audition" />
 
             <TextView
+                android:id="@+id/dayBotTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/audition"
+                android:text="1"
 
-                android:text="Audition"
-                android:textSize="98dp"
-                android:textColor="#575757"
-                android:layout_marginTop="-8dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notoserifjp"
-
-                android:text="オーディション"
-                android:textSize="46dp"
-
-                android:layout_marginTop="-86dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="-30dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/audition"
-
-                    android:text="1"
-                    android:textSize="66dp"
-
-                    android:layout_marginTop="-2dp"
-                    android:layout_marginLeft="74dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/notoserifjp"
-
-                    android:text="日 目"
-                    android:textSize="30dp"
-
-                    android:layout_marginTop="0dp"
-                    android:layout_marginLeft="10dp" />
-            </LinearLayout>
-
+                android:textSize="74dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
 
             <TextView
+                android:id="@+id/nichiTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/audition"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/japanese_name"
+                android:text="日"
+                android:textSize="30dp"
+                app:layout_constraintStart_toEndOf="@+id/dayBotTextView"
+                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
 
-                android:text="Audition"
-                android:textSize="54dp"
-                android:layout_marginTop="2000dp"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/meTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/japanese_name"
+                android:text="目"
+                android:textSize="34dp"
+                app:layout_constraintStart_toEndOf="@+id/nichiTextView"
+                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
