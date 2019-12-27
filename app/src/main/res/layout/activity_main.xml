@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:scrollbarThumbHorizontal="@null"
         android:scrollbarThumbVertical="@null"
-        tools:layout_editor_absoluteX="-35dp"
-        tools:layout_editor_absoluteY="172dp">
+        tools:layout_editor_absoluteX="-29dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
 
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/audition"
                 android:text="Day 1"
 
@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/auditionTextView"
+                android:id="@+id/auditionImageView"
                 android:layout_width="300dp"
                 android:layout_height="106dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,39 +49,155 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="@font/audition"
                 android:text="1"
 
                 android:textSize="74dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/auditionImageView" />
 
             <TextView
                 android:id="@+id/nichiTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="11dp"
                 android:fontFamily="@font/japanese_name"
                 android:text="日"
                 android:textSize="30dp"
                 app:layout_constraintStart_toEndOf="@+id/dayBotTextView"
-                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
+                app:layout_constraintTop_toTopOf="@+id/dayBotTextView" />
 
             <TextView
                 android:id="@+id/meTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="9dp"
                 android:fontFamily="@font/japanese_name"
                 android:text="目"
                 android:textSize="34dp"
                 app:layout_constraintStart_toEndOf="@+id/nichiTextView"
-                app:layout_constraintTop_toBottomOf="@+id/auditionTextView" />
+                app:layout_constraintTop_toTopOf="@+id/dayBotTextView" />
+
+            <ImageView
+                android:id="@+id/giraffeImageView"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dayBotTextView"
+                app:srcCompat="@drawable/kirin" />
+
+            <TextView
+                android:id="@+id/quoteJapaneseTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/japanese_text"
+                android:lineSpacingExtra="5dp"
+                android:text="お持ちなさい\nあなたの望んだその星を"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/giraffeImageView" />
+
+            <ImageView
+                android:id="@+id/flowerImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quoteJapaneseTextView"
+                app:srcCompat="@drawable/flower" />
+
+            <ImageView
+                android:id="@+id/lightImageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/flowerImageView"
+                app:srcCompat="@drawable/light" />
+
+            <TextView
+                android:id="@+id/quoteEnglishTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="13dp"
+                android:fontFamily="@font/english_text"
+                android:text="And it shall be bestowed upon you,\n    the Star which you have longed for —"
+                android:textAlignment="center"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lightImageView" />
+
+            <View
+                android:id="@+id/enquiryDividerView"
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="80dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/quoteEnglishTextView" />
+
+            <ImageButton
+                android:id="@+id/phoneImageButton"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="65dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enquiryDividerView"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                app:srcCompat="@drawable/red_phone_button" />
+
+            <TextView
+                android:id="@+id/enquiryJapaneseTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/japanese_text"
+                android:text="お問い合わせはこちら"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phoneImageButton" />
+
+            <TextView
+                android:id="@+id/enquiryEnglishTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="13dp"
+                android:fontFamily="@font/english_text"
+                android:text="Enquiry"
+                android:textAlignment="center"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enquiryJapaneseTextView" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enquiryEnglishTextView" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
