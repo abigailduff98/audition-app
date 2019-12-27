@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Audition</string>
+    <string name="notice">お知らせ</string>
+    <string name="starlight_quote_jp">お持ちなさい\nあなたの望んだその星を</string>
+    <string name="starlight_quote_en">And it shall be bestowed upon you,\n    the Star which you have longed for —</string>
+    <string name="tower_text">The Starlight Gatherer</string>
+    <string name="enquiry_text_jp">お問い合わせはこちら</string>
+    <string name="enquiry_text_en">Enquiry</string>
+    <string name="day_counter_pt_1">日</string>
+    <string name="day_counter_pt_2">目</string>
+    <string name="guide_text">ご案内</string>
+    <string name="honorific">さん</string>
+    <string name="today">本日</string>
+    <string name="rest">お休み</string>
+    <string name="rest_detail">No participation today</string>
 </resources>
