@@ -6,6 +6,13 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
+import java.util.Collections.rotate
+
+
+
+
 
 class NoticeActivity : AppCompatActivity() {
 
@@ -51,11 +58,19 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     private fun rotate() {
-        val rotation = AnimationUtils.loadAnimation(this@NoticeActivity, R.anim.rotate)
-        rotation.fillAfter = true
-        giraffeImageView.startAnimation(rotation)
+        val rotate = RotateAnimation(
+            360f, 0f,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_SELF, 0.5f
+        )
+
+        rotate.duration = 20000
+        rotate.repeatCount = Animation.INFINITE
+        rotate.interpolator = LinearInterpolator()
+        giraffeImageView.startAnimation(rotate)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun switchLayout(view: View) {
         if (noticeStatus == ACTIVE) {
             noticeStatus = INACTIVE
