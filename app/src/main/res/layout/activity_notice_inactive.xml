@@ -30,12 +30,12 @@
                 app:srcCompat="@drawable/audition" />
 
             <TextView
-                android:id="@+id/dayBotTextView"
+                android:id="@+id/guideTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/japanese_name"
+                android:fontFamily="@font/japanese_text_alt"
                 android:text="@string/guide_text"
                 android:textScaleX="1.4"
                 android:textSize="30dp"
@@ -51,7 +51,7 @@
                 android:alpha="0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dayBotTextView"
+                app:layout_constraintTop_toBottomOf="@+id/guideTextView"
                 app:srcCompat="@drawable/kirin" />
 
             <TextView
