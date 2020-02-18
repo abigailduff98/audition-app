@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "553993694814",
+    "firebase_url": "https://audition-app-3d4ba.firebaseio.com",
+    "project_id": "audition-app-3d4ba",
+    "storage_bucket": "audition-app-3d4ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553993694814:android:73caa4fdf8a9b1898bcecf",
+        "android_client_info": {
+          "package_name": "com.example.audition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553993694814-ev90tabjfhsvf980r1grisb73dnbooud.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.audition",
+            "certificate_hash": "3d572b220429f2bb2e5770697e859619d1dea28b"
+          }
+        },
+        {
+          "client_id": "553993694814-iqgob2aua6928soglqtgq383v976f0v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO6kUza-RLsWMbWFbkC1-6qMRsMXtLv6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553993694814-iqgob2aua6928soglqtgq383v976f0v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
