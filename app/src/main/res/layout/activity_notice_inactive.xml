@@ -49,6 +49,7 @@
                 android:layout_height="195dp"
                 android:layout_marginTop="76dp"
                 android:alpha="0"
+                android:onClick="openChat"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/guideTextView"

@@ -1,5 +1,6 @@
 package com.example.audition
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -71,7 +72,7 @@ class NoticeActivity : AppCompatActivity() {
     }
 
     @Suppress("UNUSED_PARAMETER")
-    fun switchLayout(view: View) {
+    fun switchLayout(view : View) {
         if (noticeStatus == ACTIVE) {
             noticeStatus = INACTIVE
             setContentView(R.layout.activity_notice_inactive)
@@ -81,6 +82,14 @@ class NoticeActivity : AppCompatActivity() {
             setContentView(R.layout.activity_notice_active)
         }
         animate()
+    }
+
+    fun openChat(view : View) {
+        val intent = Intent(
+            this@NoticeActivity,
+            ChatActivity::class.java
+        )
+        startActivity(intent)
     }
 
 }

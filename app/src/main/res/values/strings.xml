@@ -13,4 +13,5 @@
     <string name="today">本日</string>
     <string name="rest">お休み</string>
     <string name="rest_detail">No participation today</string>
+    <string name="type_here">Type Here</string>
 </resources>
