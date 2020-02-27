@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:text="loading"
-        android:gravity="bottom"
+        android:gravity="top"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:layout_editor_absoluteX="0dp" />
 
