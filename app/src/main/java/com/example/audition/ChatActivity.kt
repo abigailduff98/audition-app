@@ -56,12 +56,17 @@ class ChatActivity : AppCompatActivity() {
                     chatText.setText(oldText + newText)
                 }
 
-                val scrollAmount = chatText.getLayout().getLineTop(chatText.getLineCount()) - chatText.getHeight()
-                // if there is no need to scroll, scrollAmount will be <=0
-                if (scrollAmount > 0)
-                    chatText.scrollTo(0, scrollAmount)
-                else
-                    chatText.scrollTo(0, 0)
+                chatText.post {
+
+                    val scrollAmount = chatText.getLayout().getLineTop(chatText.getLineCount()) - chatText.getHeight()
+                    // if there is no need to scroll, scrollAmount will be <=0
+                    if (scrollAmount > 0)
+                        chatText.scrollTo(0, scrollAmount)
+                    else
+                        chatText.scrollTo(0, 0)
+
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {
