@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id = "@+id/menu_color_karen"
+        android:title = "1"
+        android:icon = "@drawable/crown_karen" />
+    <item
+        android:id = "@+id/menu_color_futaba"
+        android:title = "2"
+        android:icon = "@drawable/crown_futaba" />
+    <item
+        android:id = "@+id/menu_color_claudine"
+        android:title = "11"
+        android:icon = "@drawable/crown_claudine" />
+    <item
+        android:id = "@+id/menu_color_nana"
+        android:title = "15"
+        android:icon = "@drawable/crown_banana" />
+    <item
+        android:id = "@+id/menu_color_mahiru"
+        android:title = "17"
+        android:icon = "@drawable/crown_mahiru" />
+    <item
+        android:id = "@+id/menu_color_maya"
+        android:title = "18"
+        android:icon = "@drawable/crown_maya" />
+    <item
+        android:id = "@+id/menu_color_kaoruko"
+        android:title = "22"
+        android:icon = "@drawable/crown_kaoruko" />
+    <item
+        android:id = "@+id/menu_color_junna"
+        android:title = "25"
+        android:icon = "@drawable/crown_junna" />
+    <item
+        android:id = "@+id/menu_color_hikari"
+        android:title = "29"
+        android:icon = "@drawable/crown_hikari" />
+</menu>

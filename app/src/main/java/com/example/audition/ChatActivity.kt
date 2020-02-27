@@ -1,25 +1,29 @@
 package com.example.audition
 
-import androidx.appcompat.app.AppCompatActivity
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.method.ScrollingMovementMethod
+import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
+import android.widget.PopupMenu
 import android.widget.TextView
-import android.text.method.ScrollingMovementMethod;
-
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import com.google.firebase.database.*
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var chatDatabase : DatabaseReference
     private lateinit var chatText : TextView
     private lateinit var username: String
+    private lateinit var userColor: Integer
+    private lateinit var newUserColor: Integer
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,6 +38,9 @@ class ChatActivity : AppCompatActivity() {
 
         username = "Anonymous"
 
+        userColor = Color.RED as Integer
+        newUserColor = Color.RED as Integer
+
         chatText.movementMethod = ScrollingMovementMethod()
 
         val chatListener = object : ValueEventListener {
@@ -42,19 +49,27 @@ class ChatActivity : AppCompatActivity() {
 
                 //clear chat
                 chatText.setText("")
+                userColor = newUserColor
+                var completeSpannable = SpannableStringBuilder()
 
                 for (snapshot in dataSnapshot.children) {
                     val msg = snapshot.getValue(ChatMessage::class.java)
-                    val oldText = chatText.text.toString()
+                    val oldText = completeSpannable.toString()
 
-                    var newText =""
-                    if (oldText == "") {
-                        newText = msg!!.readUser() + ": " + msg!!.readMessage()
-                    } else {
-                        newText = "\n" + msg!!.readUser() + ": " + msg!!.readMessage()
-                    }
-                    chatText.setText(oldText + newText)
+                    var userText =
+                        when (oldText == "") {
+                            true ->msg!!.readUser()
+                            false -> "\n" + msg!!.readUser()
+                        }
+
+                    val msgText = ": " + msg!!.readMessage()
+
+                    completeSpannable.append(userText,ForegroundColorSpan(userColor.toInt()), Spanned.SPAN_INCLUSIVE_INCLUSIVE)
+                    completeSpannable.append(msgText, ForegroundColorSpan(ResourcesCompat.getColor(getResources(), R.color.colorTextPrimary, null)), Spanned.SPAN_INCLUSIVE_INCLUSIVE)
+
                 }
+
+                chatText.setText(completeSpannable, TextView.BufferType.SPANNABLE)
 
                 chatText.post {
 
@@ -91,6 +106,58 @@ class ChatActivity : AppCompatActivity() {
         chatDatabase.child(id).setValue(message)
 
         textField.setText("")
+    }
+
+    fun openColorMenu(view: View) {
+
+        newUserColor = Color.YELLOW as Integer
+
+        /*val popupMenu = PopupMenu(this, view)
+
+        popupMenu.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.menu_color_karen -> {
+                    userColor = Color.RED as Integer
+                    true
+                }
+                R.id.menu_color_kaoruko -> {
+                    userColor = Color.MAGENTA as Integer
+                    true
+                }
+                R.id.menu_color_hikari -> {
+                    userColor = Color.BLUE as Integer
+                    true
+                }
+                R.id.menu_color_mahiru -> {
+                    userColor = Color.GREEN as Integer
+                    true
+                }
+                R.id.menu_color_maya -> {
+                    userColor = Color.LTGRAY as Integer
+                    true
+                }
+                R.id.menu_color_claudine -> {
+                    userColor = Color.DKGRAY as Integer
+                    true
+                }
+                R.id.menu_color_junna -> {
+                    userColor = Color.CYAN as Integer
+                    true
+                }
+                R.id.menu_color_nana -> {
+                    userColor = Color.YELLOW as Integer
+                    true
+                }
+                R.id.menu_color_futaba -> {
+                    userColor = Color.MAGENTA as Integer
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popupMenu.inflate(R.menu.menu_main)
+        popupMenu.show()*/
     }
 
     fun changeUsername(view: View) {
