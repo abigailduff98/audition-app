@@ -15,4 +15,18 @@
     <string name="rest_detail">No participation today</string>
     <string name="type_here">Type Here</string>
     <string name="cancelled">Cancelled</string>
+    <string name="loading">loading</string>
+    <string name="send">Send</string>
+    <string name="name">Name</string>
+    <string name="change_color">Change Color</string>
+    <string name="change_name">Change Name</string>
+    <string name="you_are_currently">You are currently:</string>
+    <string name="header_image">Header Image</string>
+    <string name="_3">3</string>
+    <string name="flower_image">Flower Image</string>
+    <string name="light_image">Light Image</string>
+    <string name="giraffe_image">Giraffe Image</string>
+    <string name="tower_image">Tower Image</string>
+    <string name="kagura_hikari_name_jp">神楽ひかり</string>
+    <string name="phone_button_image">Phone Button Image</string>
 </resources>

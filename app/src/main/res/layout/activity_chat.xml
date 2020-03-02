@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true" >
+    android:focusableInTouchMode="true">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/chatHeaderImage"
         android:layout_width="100dp"
         android:layout_height="68dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/header_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,35 +19,36 @@
         app:srcCompat="@drawable/chat" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/chatScrollView"
         android:layout_width="match_parent"
         android:layout_height="422dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/chatHeaderImage">
 
         <TextView
-            android:id="@+id/chatbox"
+            android:id="@+id/chatTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="loading" />
+            android:text="@string/loading" />
 
     </ScrollView>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/inputEditText"
         android:layout_width="317dp"
         android:layout_height="50dp"
         android:ems="10"
         android:hint="@string/type_here"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:text=""
         android:textColor="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -54,59 +56,59 @@
         android:layout_width="87dp"
         android:layout_height="50dp"
         android:onClick="sendMessage"
-        android:text="Send"
+        android:text="@string/send"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/inputEditText"
+        app:layout_constraintTop_toTopOf="@+id/inputEditText" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/usernameButton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:onClick="changeUsername"
-        android:text="Change Name"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:text="@string/change_name"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
         app:layout_constraintHorizontal_bias="0.347"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/previewTextView2" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/colorButton"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:onClick="openColorMenu"
-        android:text="Change Color"
+        android:text="@string/change_color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+        app:layout_constraintTop_toTopOf="@+id/usernameButton" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/previewTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You are currently:"
+        android:text="@string/you_are_currently"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/previewTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="@string/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/previewTextView1" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
+        android:id="@+id/guidelineVertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guidelineHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -117,8 +119,9 @@
         android:layout_width="100dp"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/inputEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toBottomOf="@+id/chatScrollView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

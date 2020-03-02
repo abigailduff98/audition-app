@@ -19,11 +19,11 @@ import com.google.firebase.database.*
 
 class ChatActivity : AppCompatActivity() {
 
-    private lateinit var chatDatabase : DatabaseReference
-    private lateinit var chatText : TextView
+    private lateinit var chatDatabase: DatabaseReference
+    private lateinit var chatText: TextView
     private lateinit var username: String
     private lateinit var userPreview: TextView
-    private var userColor = 0
+    private var userColor = Color.RED
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -35,8 +35,8 @@ class ChatActivity : AppCompatActivity() {
         username = "Anonymous"
         userColor = Color.RED
         chatDatabase = FirebaseDatabase.getInstance().getReference("/log")
-        chatText = findViewById(R.id.chatbox)
-        userPreview = findViewById(R.id.textView3)
+        chatText = findViewById(R.id.chatTextView)
+        userPreview = findViewById(R.id.previewTextView2)
 
         randomizeUserColor()
         updateUserPreview()
@@ -73,16 +73,6 @@ class ChatActivity : AppCompatActivity() {
                         Spanned.SPAN_INCLUSIVE_INCLUSIVE
                     )
 
-                    /*
-                    // bold the user
-                    completeSpannable.setSpan(
-                        StyleSpan(android.graphics.Typeface.BOLD),
-                        completeSpannable.length - userText.length,
-                        completeSpannable.length,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    */
-
                     // get default text color
                     val color = getResourceColor(R.color.colorTextPrimary)
 
@@ -99,12 +89,8 @@ class ChatActivity : AppCompatActivity() {
                 chatText.setText(completeSpannable, TextView.BufferType.SPANNABLE)
 
                 // make the chat scroll to the bottom
-                val chatScrollView = findViewById<ScrollView>(R.id.scrollView2)
-                chatScrollView.post {
-
-                    chatScrollView.fullScroll(View.FOCUS_DOWN)
-
-                }
+                val chatScrollView = findViewById<ScrollView>(R.id.chatScrollView)
+                chatScrollView.post { chatScrollView.fullScroll(View.FOCUS_DOWN) }
 
             }
 
@@ -130,9 +116,39 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
-    fun sendMessage(@Suppress("UNUSED_PARAMETER")view: View) {
+    private fun randomizeUserColor() {
 
-        val textField = findViewById<EditText>(R.id.editText)
+        val colors = listOf(
+            R.color.karen,
+            R.color.kaoruko,
+            R.color.claudine,
+            R.color.nana,
+            R.color.maya,
+            R.color.mahiru,
+            R.color.junna,
+            R.color.hikari,
+            R.color.futaba
+        )
+
+        userColor = getResourceColor(colors.shuffled().take(1)[0])
+
+    }
+
+    private fun getResourceColor(color: Int): Int {
+        return ResourcesCompat.getColor(resources, color, null)
+    }
+
+    private fun changeColor(resourceColor: Int): Boolean {
+
+        userColor = getResourceColor(resourceColor)
+        updateUserPreview()
+        return true
+
+    }
+
+    fun sendMessage(@Suppress("UNUSED_PARAMETER") view: View) {
+
+        val textField = findViewById<EditText>(R.id.inputEditText)
 
         val msg = textField.text.toString()
 
@@ -146,37 +162,6 @@ class ChatActivity : AppCompatActivity() {
 
         // clear text
         textField.setText("")
-    }
-
-    private fun randomizeUserColor() {
-
-        val colors = listOf(
-            R.color.karen,
-            R.color.kaoruko,
-            R.color.hikari,
-            R.color.futaba,
-            R.color.nana,
-            R.color.claudine,
-            R.color.maya,
-            R.color.mahiru,
-            R.color.junna
-        )
-
-        userColor = getResourceColor(colors.shuffled().take(1)[0])
-
-    }
-
-    private fun getResourceColor(color: Int): Int {
-        return ResourcesCompat.getColor(resources, color, null)
-    }
-
-    private fun changeColor(resourceColor: Int): Boolean {
-
-        val color = getResourceColor(resourceColor)
-
-        userColor = color
-        updateUserPreview()
-        return true
     }
 
     // called on button press and shows menu for color selector
@@ -222,13 +207,16 @@ class ChatActivity : AppCompatActivity() {
 
         // try to force the menu to show the crown icons
         try {
+
             val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
             fieldMPopup.isAccessible = true
             val mPopup = fieldMPopup.get(popupMenu)
+
             mPopup.javaClass
                 .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
                 .invoke(mPopup, true)
-        } catch (e: Exception){
+
+        } catch (e: Exception) {
             Log.e("Main", "Error showing menu icons.", e)
         } finally {
             popupMenu.show()
@@ -236,7 +224,7 @@ class ChatActivity : AppCompatActivity() {
     }
 
     // called on button press and shows alert to change user
-    fun changeUsername(@Suppress("UNUSED_PARAMETER")view: View) {
+    fun changeUsername(@Suppress("UNUSED_PARAMETER") view: View) {
 
         val userField = EditText(this)
 
@@ -256,7 +244,8 @@ class ChatActivity : AppCompatActivity() {
             }
 
             // negative button text and action
-            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel()
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.cancel()
             }
 
         // create dialog box

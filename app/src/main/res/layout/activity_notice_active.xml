@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NoticeActivity">
@@ -17,28 +16,29 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/auditionImageView"
                 android:layout_width="300dp"
                 android:layout_height="106dp"
                 android:layout_marginTop="38dp"
+                android:contentDescription="@string/header_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/audition" />
 
             <TextView
-                android:id="@+id/dayBotTextView"
+                android:id="@+id/dayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/audition"
-                android:text="3"
+                android:text="@string/_3"
 
-                android:textSize="74dp"
+                android:textSize="74sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/auditionImageView" />
@@ -52,9 +52,9 @@
                 android:fontFamily="@font/japanese_text_alt"
                 android:text="@string/day_counter_pt_1"
                 android:textScaleX="1.4"
-                android:textSize="24dp"
-                app:layout_constraintStart_toEndOf="@+id/dayBotTextView"
-                app:layout_constraintTop_toTopOf="@+id/dayBotTextView" />
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/dayTextView"
+                app:layout_constraintTop_toTopOf="@+id/dayTextView" />
 
             <TextView
                 android:id="@+id/meTextView"
@@ -65,9 +65,9 @@
                 android:fontFamily="@font/japanese_text_alt"
                 android:text="@string/day_counter_pt_2"
                 android:textScaleX="1.4"
-                android:textSize="26dp"
+                android:textSize="26sp"
                 app:layout_constraintStart_toEndOf="@+id/nichiTextView"
-                app:layout_constraintTop_toTopOf="@+id/dayBotTextView" />
+                app:layout_constraintTop_toTopOf="@+id/dayTextView" />
 
             <ImageView
                 android:id="@+id/giraffeImageView"
@@ -75,9 +75,10 @@
                 android:layout_height="195dp"
                 android:layout_marginTop="28dp"
                 android:alpha="0"
+                android:contentDescription="@string/giraffe_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dayBotTextView"
+                app:layout_constraintTop_toBottomOf="@+id/dayTextView"
                 app:srcCompat="@drawable/kirin" />
 
             <TextView
@@ -89,7 +90,7 @@
                 android:lineSpacingExtra="5dp"
                 android:text="@string/starlight_quote_jp"
                 android:textAlignment="center"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/giraffeImageView" />
@@ -99,6 +100,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="20dp"
+                android:contentDescription="@string/flower_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quoteJapaneseTextView"
@@ -109,6 +111,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="1dp"
+                android:contentDescription="@string/light_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/flowerImageView"
@@ -119,11 +122,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:lineSpacingExtra="13dp"
                 android:fontFamily="@font/english_text"
+                android:lineSpacingExtra="13dp"
                 android:text="@string/starlight_quote_en"
                 android:textAlignment="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lightImageView" />
@@ -133,6 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginTop="70dp"
+                android:contentDescription="@string/tower_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/quoteEnglishTextView"
@@ -143,11 +147,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:lineSpacingExtra="13dp"
                 android:fontFamily="@font/english_text"
+                android:lineSpacingExtra="13dp"
                 android:text="@string/tower_text"
                 android:textAlignment="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/towerImageView" />
@@ -161,7 +165,7 @@
                 android:text="@string/notice"
                 android:textAlignment="center"
                 android:textScaleX="1.4"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/towerTextView" />
@@ -182,11 +186,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/japanese_text_alt"
-                android:text="神楽ひかり"
+                android:text="@string/kagura_hikari_name_jp"
                 android:textAlignment="center"
                 android:textColor="#6292e9"
                 android:textScaleX="1.4"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noticeUnderlineView" />
@@ -201,7 +205,7 @@
                 android:text="@string/honorific"
                 android:textAlignment="center"
                 android:textScaleX="1.4"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/nameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
@@ -214,7 +218,7 @@
                 android:text="@string/today"
                 android:textAlignment="center"
                 android:textScaleX="1.4"
-                android:textSize="28dp"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/honorificTextView" />
@@ -229,7 +233,7 @@
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textScaleX="1.4"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/todayTextView" />
@@ -242,7 +246,7 @@
                 android:fontFamily="@font/english_text"
                 android:text="@string/rest_detail"
                 android:textAlignment="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activityTextView" />
@@ -262,12 +266,13 @@
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="65dp"
+                android:background="@null"
+                android:contentDescription="@string/phone_button_image"
+                android:onClick="switchLayout"
+                android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enquiryDividerView"
-                android:scaleType="fitCenter"
-                android:background="@null"
-                android:onClick="switchLayout"
                 app:srcCompat="@drawable/red_phone_button" />
 
             <TextView
@@ -278,7 +283,7 @@
                 android:fontFamily="@font/japanese_text"
                 android:text="@string/enquiry_text_jp"
                 android:textAlignment="center"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phoneImageButton" />
@@ -288,11 +293,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:lineSpacingExtra="13dp"
                 android:fontFamily="@font/english_text"
+                android:lineSpacingExtra="13dp"
                 android:text="@string/enquiry_text_en"
                 android:textAlignment="center"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enquiryJapaneseTextView" />
