@@ -3,6 +3,15 @@
     <color name="colorPrimary">#303030</color>
     <color name="colorPrimaryDark">#303030</color>
     <color name="colorAccent">#303030</color>
-    <color name="colorBackground">#171717</color>>
-    <color name="colorTextPrimary">#CDCDCD</color>>
+    <color name="colorBackground">#171717</color>
+    <color name="colorTextPrimary">#CDCDCD</color>
+    <color name="karen">#fb5458</color>
+    <color name="hikari">#6292e9</color>
+    <color name="junna">#95caed</color>
+    <color name="maya">#cbc6cc</color>
+    <color name="nana">#fdd162</color>
+    <color name="claudine">#fe9952</color>
+    <color name="futaba">#8c67aa</color>
+    <color name="kaoruko">#e08696</color>
+    <color name="mahiru">#61bf99</color>
 </resources>

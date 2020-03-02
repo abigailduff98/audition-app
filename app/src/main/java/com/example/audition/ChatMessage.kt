@@ -1,26 +1,29 @@
 package com.example.audition
 
 class ChatMessage {
-    var message: String? = null
-    var username: String? = null
     var id: String? = null
+    var user: String? = null
+    var color: Int = 0
+    var msg: String? = null
 
+    // empty constructor used for getting object from database
     constructor() {
 
     }
 
-    constructor(text: String, name: String, identifier: String) {
-        this.message = text
-        this.username = name
-        this.id = identifier
-    }
-
-    fun readMessage(): String {
-        return message.toString()
+    constructor(id: String, user: String, color: Int, msg: String) {
+        this.id = id
+        this.user = user
+        this.color = color
+        this.msg = msg
     }
 
     fun readUser(): String {
-        return username.toString()
+        return user.toString()
+    }
+
+    fun readMessage(): String {
+        return msg.toString()
     }
 
 }

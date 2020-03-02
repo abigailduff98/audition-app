@@ -1,166 +1,226 @@
 package com.example.audition
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.Spanned
-import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
+import android.util.Log
+import android.view.MenuInflater
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.PopupMenu
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.database.*
-import android.view.MenuInflater
 
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var chatDatabase : DatabaseReference
     private lateinit var chatText : TextView
     private lateinit var username: String
-    private lateinit var userColor: Integer
-    private lateinit var newUserColor: Integer
+    private lateinit var userPreview: TextView
+    private var userColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        // create the view
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        //Utility.hideSystemUI(window)
-
-        chatDatabase = FirebaseDatabase.getInstance().getReference("/log")
-
-        chatText = findViewById(R.id.chatbox)
-
+        // initialize variables
         username = "Anonymous"
+        userColor = Color.RED
+        chatDatabase = FirebaseDatabase.getInstance().getReference("/log")
+        chatText = findViewById(R.id.chatbox)
+        userPreview = findViewById(R.id.textView3)
 
-        userColor = Color.RED as Integer
-        newUserColor = Color.RED as Integer
+        randomizeUserColor()
+        updateUserPreview()
 
-        chatText.movementMethod = ScrollingMovementMethod()
-
+        // set up the chat to respond to data changes
         val chatListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 //clear chat
-                chatText.setText("")
-                userColor = newUserColor
-                var completeSpannable = SpannableStringBuilder()
+                chatText.text = ""
+
+                // begin building updated text to display
+                val completeSpannable = SpannableStringBuilder()
 
                 for (snapshot in dataSnapshot.children) {
+
+                    // read the username and message
                     val msg = snapshot.getValue(ChatMessage::class.java)
                     val oldText = completeSpannable.toString()
 
-                    var userText =
+                    val userText =
                         when (oldText == "") {
-                            true ->msg!!.readUser()
+                            true -> msg!!.readUser()
                             false -> "\n" + msg!!.readUser()
                         }
 
-                    val msgText = ": " + msg!!.readMessage()
+                    val msgText = ": " + msg.readMessage()
 
-                    completeSpannable.append(userText,ForegroundColorSpan(userColor.toInt()), Spanned.SPAN_INCLUSIVE_INCLUSIVE)
-                    completeSpannable.append(msgText, ForegroundColorSpan(ResourcesCompat.getColor(getResources(), R.color.colorTextPrimary, null)), Spanned.SPAN_INCLUSIVE_INCLUSIVE)
+                    // add the user
+                    completeSpannable.append(
+                        userText,
+                        ForegroundColorSpan(msg.color),
+                        Spanned.SPAN_INCLUSIVE_INCLUSIVE
+                    )
+
+                    /*
+                    // bold the user
+                    completeSpannable.setSpan(
+                        StyleSpan(android.graphics.Typeface.BOLD),
+                        completeSpannable.length - userText.length,
+                        completeSpannable.length,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                    */
+
+                    // get default text color
+                    val color = getResourceColor(R.color.colorTextPrimary)
+
+                    // add the msg
+                    completeSpannable.append(
+                        msgText,
+                        ForegroundColorSpan(color),
+                        Spanned.SPAN_INCLUSIVE_INCLUSIVE
+                    )
 
                 }
 
+                // set the new chat text
                 chatText.setText(completeSpannable, TextView.BufferType.SPANNABLE)
 
-                chatText.post {
+                // make the chat scroll to the bottom
+                val chatScrollView = findViewById<ScrollView>(R.id.scrollView2)
+                chatScrollView.post {
 
-                    val scrollAmount = chatText.getLayout().getLineTop(chatText.getLineCount()) - chatText.getHeight()
-                    // if there is no need to scroll, scrollAmount will be <=0
-                    if (scrollAmount > 0)
-                        chatText.scrollTo(0, scrollAmount)
-                    else
-                        chatText.scrollTo(0, 0)
+                    chatScrollView.fullScroll(View.FOCUS_DOWN)
 
                 }
 
             }
 
             override fun onCancelled(error: DatabaseError) {
-                chatText.setText("CANCELLED")
+                chatText.text = resources.getString(R.string.cancelled)
             }
 
         }
 
+        // set the listener
         chatDatabase.addValueEventListener(chatListener)
     }
 
-    fun sendMessage(view: View) {
-        var textField = findViewById(R.id.editText) as EditText
+    private fun updateUserPreview() {
+
+        val currentName = SpannableStringBuilder()
+        currentName.append(
+            username,
+            ForegroundColorSpan(userColor),
+            Spanned.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        userPreview.setText(currentName, TextView.BufferType.SPANNABLE)
+
+    }
+
+    fun sendMessage(@Suppress("UNUSED_PARAMETER")view: View) {
+
+        val textField = findViewById<EditText>(R.id.editText)
 
         val msg = textField.text.toString()
 
+        // don't send empty messages
         if (msg == "") return
 
+        // add msg to database
         val id = chatDatabase.push().key.toString()
-        val message = ChatMessage(msg, username, id)
-
+        val message = ChatMessage(id, username, userColor, msg)
         chatDatabase.child(id).setValue(message)
 
+        // clear text
         textField.setText("")
     }
 
-    fun openColorMenu(view: View) {
+    private fun randomizeUserColor() {
 
-        //newUserColor = Color.YELLOW as Integer
+        val colors = listOf(
+            R.color.karen,
+            R.color.kaoruko,
+            R.color.hikari,
+            R.color.futaba,
+            R.color.nana,
+            R.color.claudine,
+            R.color.maya,
+            R.color.mahiru,
+            R.color.junna
+        )
+
+        userColor = getResourceColor(colors.shuffled().take(1)[0])
+
+    }
+
+    private fun getResourceColor(color: Int): Int {
+        return ResourcesCompat.getColor(resources, color, null)
+    }
+
+    private fun changeColor(resourceColor: Int): Boolean {
+
+        val color = getResourceColor(resourceColor)
+
+        userColor = color
+        updateUserPreview()
+        return true
+    }
+
+    // called on button press and shows menu for color selector
+    fun openColorMenu(view: View) {
 
         val popupMenu = PopupMenu(this, view)
 
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.menu_color_karen -> {
-                    newUserColor = Color.RED as Integer
-                    true
+                    changeColor(R.color.karen)
                 }
                 R.id.menu_color_kaoruko -> {
-                    newUserColor = Color.MAGENTA as Integer
-                    true
+                    changeColor(R.color.kaoruko)
                 }
                 R.id.menu_color_hikari -> {
-                    newUserColor = Color.BLUE as Integer
-                    true
+                    changeColor(R.color.hikari)
                 }
                 R.id.menu_color_mahiru -> {
-                    newUserColor = Color.GREEN as Integer
-                    true
+                    changeColor(R.color.mahiru)
                 }
                 R.id.menu_color_maya -> {
-                    newUserColor = Color.LTGRAY as Integer
-                    true
+                    changeColor(R.color.maya)
                 }
                 R.id.menu_color_claudine -> {
-                    newUserColor = Color.DKGRAY as Integer
-                    true
+                    changeColor(R.color.claudine)
                 }
                 R.id.menu_color_junna -> {
-                    newUserColor = Color.CYAN as Integer
-                    true
+                    changeColor(R.color.junna)
                 }
                 R.id.menu_color_nana -> {
-                    newUserColor = Color.YELLOW as Integer
-                    true
+                    changeColor(R.color.nana)
                 }
                 R.id.menu_color_futaba -> {
-                    newUserColor = Color.MAGENTA as Integer
-                    true
+                    changeColor(R.color.futaba)
                 }
                 else -> false
             }
         }
 
         val inflater = MenuInflater(this)
-
         inflater.inflate(R.menu.menu_main, popupMenu.menu)
 
+        // try to force the menu to show the crown icons
         try {
             val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
             fieldMPopup.isAccessible = true
@@ -169,40 +229,45 @@ class ChatActivity : AppCompatActivity() {
                 .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
                 .invoke(mPopup, true)
         } catch (e: Exception){
-            //Log.e("Main", "Error showing menu icons.", e)
+            Log.e("Main", "Error showing menu icons.", e)
         } finally {
             popupMenu.show()
         }
     }
 
-    fun changeUsername(view: View) {
+    // called on button press and shows alert to change user
+    fun changeUsername(@Suppress("UNUSED_PARAMETER")view: View) {
 
         val userField = EditText(this)
 
         // build alert dialog
         val dialogBuilder = AlertDialog.Builder(this)
 
-        // set message of alert dialog
-        // dialogBuilder.setMessage("Enter your new username")
             // add EditText view
             .setView(userField)
-            // if the dialog is cancelable
+
+            // make it cancelable
             .setCancelable(false)
+
             // positive button text and action
-            .setPositiveButton("Proceed", DialogInterface.OnClickListener { dialog, id ->
-                    username = userField.text.toString()
-            })
+            .setPositiveButton("Proceed") { _, _ ->
+                username = userField.text.toString()
+                updateUserPreview()
+            }
+
             // negative button text and action
-            .setNegativeButton("Cancel", DialogInterface.OnClickListener {
-                    dialog, id -> dialog.cancel()
-            })
+            .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel()
+            }
 
         // create dialog box
         val alert = dialogBuilder.create()
-        // set title for alert dialog box
         alert.setTitle("Change Username")
-        // show alert dialog
+
         alert.show()
+
+        val color = getResourceColor(R.color.colorTextPrimary)
+        alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(color)
+        alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(color)
 
     }
 
