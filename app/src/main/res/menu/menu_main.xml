@@ -2,38 +2,38 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id = "@+id/menu_color_karen"
-        android:title = "1"
-        android:icon = "@drawable/crown_karen" />
-    <item
-        android:id = "@+id/menu_color_futaba"
-        android:title = "2"
-        android:icon = "@drawable/crown_futaba" />
-    <item
-        android:id = "@+id/menu_color_claudine"
-        android:title = "11"
-        android:icon = "@drawable/crown_claudine" />
-    <item
-        android:id = "@+id/menu_color_nana"
-        android:title = "15"
-        android:icon = "@drawable/crown_banana" />
-    <item
-        android:id = "@+id/menu_color_mahiru"
-        android:title = "17"
-        android:icon = "@drawable/crown_mahiru" />
-    <item
-        android:id = "@+id/menu_color_maya"
-        android:title = "18"
-        android:icon = "@drawable/crown_maya" />
+        android:title = "Karen"
+        android:icon = "@drawable/crown_karen_small" />
     <item
         android:id = "@+id/menu_color_kaoruko"
-        android:title = "22"
-        android:icon = "@drawable/crown_kaoruko" />
+        android:title = "Kaoruko"
+        android:icon = "@drawable/crown_kaoruko_small" />
+    <item
+        android:id = "@+id/menu_color_claudine"
+        android:title = "Claudine"
+        android:icon = "@drawable/crown_claudine_small" />
+    <item
+        android:id = "@+id/menu_color_nana"
+        android:title = "Nana"
+        android:icon = "@drawable/crown_banana_small" />
+    <item
+        android:id = "@+id/menu_color_maya"
+        android:title = "Maya"
+        android:icon = "@drawable/crown_maya_small" />
+    <item
+        android:id = "@+id/menu_color_mahiru"
+        android:title = "Mahiru"
+        android:icon = "@drawable/crown_mahiru_small" />
     <item
         android:id = "@+id/menu_color_junna"
-        android:title = "25"
-        android:icon = "@drawable/crown_junna" />
+        android:title = "Junna"
+        android:icon = "@drawable/crown_junna_small" />
     <item
         android:id = "@+id/menu_color_hikari"
-        android:title = "29"
-        android:icon = "@drawable/crown_hikari" />
+        android:title = "Hikari"
+        android:icon = "@drawable/crown_hikari_small" />
+    <item
+        android:id = "@+id/menu_color_futaba"
+        android:title = "Futaba"
+        android:icon = "@drawable/crown_futaba_small" />
 </menu>

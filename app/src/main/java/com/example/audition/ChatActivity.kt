@@ -16,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.google.firebase.database.*
+import android.view.MenuInflater
 
 class ChatActivity : AppCompatActivity() {
 
@@ -110,54 +111,68 @@ class ChatActivity : AppCompatActivity() {
 
     fun openColorMenu(view: View) {
 
-        newUserColor = Color.YELLOW as Integer
+        //newUserColor = Color.YELLOW as Integer
 
-        /*val popupMenu = PopupMenu(this, view)
+        val popupMenu = PopupMenu(this, view)
 
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.menu_color_karen -> {
-                    userColor = Color.RED as Integer
+                    newUserColor = Color.RED as Integer
                     true
                 }
                 R.id.menu_color_kaoruko -> {
-                    userColor = Color.MAGENTA as Integer
+                    newUserColor = Color.MAGENTA as Integer
                     true
                 }
                 R.id.menu_color_hikari -> {
-                    userColor = Color.BLUE as Integer
+                    newUserColor = Color.BLUE as Integer
                     true
                 }
                 R.id.menu_color_mahiru -> {
-                    userColor = Color.GREEN as Integer
+                    newUserColor = Color.GREEN as Integer
                     true
                 }
                 R.id.menu_color_maya -> {
-                    userColor = Color.LTGRAY as Integer
+                    newUserColor = Color.LTGRAY as Integer
                     true
                 }
                 R.id.menu_color_claudine -> {
-                    userColor = Color.DKGRAY as Integer
+                    newUserColor = Color.DKGRAY as Integer
                     true
                 }
                 R.id.menu_color_junna -> {
-                    userColor = Color.CYAN as Integer
+                    newUserColor = Color.CYAN as Integer
                     true
                 }
                 R.id.menu_color_nana -> {
-                    userColor = Color.YELLOW as Integer
+                    newUserColor = Color.YELLOW as Integer
                     true
                 }
                 R.id.menu_color_futaba -> {
-                    userColor = Color.MAGENTA as Integer
+                    newUserColor = Color.MAGENTA as Integer
                     true
                 }
                 else -> false
             }
         }
 
-        popupMenu.inflate(R.menu.menu_main)
-        popupMenu.show()*/
+        val inflater = MenuInflater(this)
+
+        inflater.inflate(R.menu.menu_main, popupMenu.menu)
+
+        try {
+            val fieldMPopup = PopupMenu::class.java.getDeclaredField("mPopup")
+            fieldMPopup.isAccessible = true
+            val mPopup = fieldMPopup.get(popupMenu)
+            mPopup.javaClass
+                .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+                .invoke(mPopup, true)
+        } catch (e: Exception){
+            //Log.e("Main", "Error showing menu icons.", e)
+        } finally {
+            popupMenu.show()
+        }
     }
 
     fun changeUsername(view: View) {
