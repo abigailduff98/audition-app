@@ -171,33 +171,15 @@ class ChatActivity : AppCompatActivity() {
 
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.menu_color_karen -> {
-                    changeColor(R.color.karen)
-                }
-                R.id.menu_color_kaoruko -> {
-                    changeColor(R.color.kaoruko)
-                }
-                R.id.menu_color_hikari -> {
-                    changeColor(R.color.hikari)
-                }
-                R.id.menu_color_mahiru -> {
-                    changeColor(R.color.mahiru)
-                }
-                R.id.menu_color_maya -> {
-                    changeColor(R.color.maya)
-                }
-                R.id.menu_color_claudine -> {
-                    changeColor(R.color.claudine)
-                }
-                R.id.menu_color_junna -> {
-                    changeColor(R.color.junna)
-                }
-                R.id.menu_color_nana -> {
-                    changeColor(R.color.nana)
-                }
-                R.id.menu_color_futaba -> {
-                    changeColor(R.color.futaba)
-                }
+                R.id.menu_color_karen -> changeColor(R.color.karen)
+                R.id.menu_color_kaoruko -> changeColor(R.color.kaoruko)
+                R.id.menu_color_claudine -> changeColor(R.color.claudine)
+                R.id.menu_color_nana -> changeColor(R.color.nana)
+                R.id.menu_color_maya -> changeColor(R.color.maya)
+                R.id.menu_color_mahiru -> changeColor(R.color.mahiru)
+                R.id.menu_color_junna -> changeColor(R.color.junna)
+                R.id.menu_color_hikari -> changeColor(R.color.hikari)
+                R.id.menu_color_futaba -> changeColor(R.color.futaba)
                 else -> false
             }
         }

@@ -3,37 +3,37 @@
     <item
         android:id = "@+id/menu_color_karen"
         android:title = "Karen"
-        android:icon = "@drawable/crown_karen_small" />
+        android:icon = "@drawable/crown_karen" />
     <item
         android:id = "@+id/menu_color_kaoruko"
         android:title = "Kaoruko"
-        android:icon = "@drawable/crown_kaoruko_small" />
+        android:icon = "@drawable/crown_kaoruko" />
     <item
         android:id = "@+id/menu_color_claudine"
         android:title = "Claudine"
-        android:icon = "@drawable/crown_claudine_small" />
+        android:icon = "@drawable/crown_claudine" />
     <item
         android:id = "@+id/menu_color_nana"
         android:title = "Nana"
-        android:icon = "@drawable/crown_banana_small" />
+        android:icon = "@drawable/crown_nana" />
     <item
         android:id = "@+id/menu_color_maya"
         android:title = "Maya"
-        android:icon = "@drawable/crown_maya_small" />
+        android:icon = "@drawable/crown_maya" />
     <item
         android:id = "@+id/menu_color_mahiru"
         android:title = "Mahiru"
-        android:icon = "@drawable/crown_mahiru_small" />
+        android:icon = "@drawable/crown_mahiru" />
     <item
         android:id = "@+id/menu_color_junna"
         android:title = "Junna"
-        android:icon = "@drawable/crown_junna_small" />
+        android:icon = "@drawable/crown_junna" />
     <item
         android:id = "@+id/menu_color_hikari"
         android:title = "Hikari"
-        android:icon = "@drawable/crown_hikari_small" />
+        android:icon = "@drawable/crown_hikari" />
     <item
         android:id = "@+id/menu_color_futaba"
         android:title = "Futaba"
-        android:icon = "@drawable/crown_futaba_small" />
+        android:icon = "@drawable/crown_futaba" />
 </menu>

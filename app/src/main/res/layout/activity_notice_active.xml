@@ -36,7 +36,7 @@
 
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/audition"
-                android:text="@string/_3"
+                android:text="@string/third_day"
 
                 android:textSize="74sp"
                 app:layout_constraintEnd_toEndOf="parent"
