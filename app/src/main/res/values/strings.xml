@@ -29,4 +29,8 @@
     <string name="tower_image">Tower Image</string>
     <string name="kagura_hikari_name_jp">神楽ひかり</string>
     <string name="phone_button_image">Phone Button Image</string>
+    <string name="channel_name">AuditionChannelID</string>
+    <string name="channel_description">Audition Channel</string>
+    <string name="alarm_notification_text">alarm notification text</string>
+    <string name="alarm_notification_title">alarm notification title</string>
 </resources>

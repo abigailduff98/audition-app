@@ -185,7 +185,7 @@ class ChatActivity : AppCompatActivity() {
         }
 
         val inflater = MenuInflater(this)
-        inflater.inflate(R.menu.menu_main, popupMenu.menu)
+        inflater.inflate(R.menu.menu_color, popupMenu.menu)
 
         // try to force the menu to show the crown icons
         try {
