@@ -46,7 +46,7 @@ class ChatActivity : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                //clear chat
+                // clear chat
                 chatText.text = ""
 
                 // begin building updated text to display
@@ -70,18 +70,11 @@ class ChatActivity : AppCompatActivity() {
                     completeSpannable.append(
                         userText,
                         ForegroundColorSpan(msg.color),
-                        Spanned.SPAN_INCLUSIVE_INCLUSIVE
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
                     )
-
-                    // get default text color
-                    val color = getResourceColor(R.color.colorTextPrimary)
 
                     // add the msg
-                    completeSpannable.append(
-                        msgText,
-                        ForegroundColorSpan(color),
-                        Spanned.SPAN_INCLUSIVE_INCLUSIVE
-                    )
+                    completeSpannable.append(msgText)
 
                 }
 
@@ -146,24 +139,6 @@ class ChatActivity : AppCompatActivity() {
 
     }
 
-    fun sendMessage(@Suppress("UNUSED_PARAMETER") view: View) {
-
-        val textField = findViewById<EditText>(R.id.inputEditText)
-
-        val msg = textField.text.toString()
-
-        // don't send empty messages
-        if (msg == "") return
-
-        // add msg to database
-        val id = chatDatabase.push().key.toString()
-        val message = ChatMessage(id, username, userColor, msg)
-        chatDatabase.child(id).setValue(message)
-
-        // clear text
-        textField.setText("")
-    }
-
     // called on button press and shows menu for color selector
     fun openColorMenu(view: View) {
 
@@ -205,7 +180,26 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    // called on button press and shows alert to change user
+    // called on button press and sends message to database
+    fun sendMessage(@Suppress("UNUSED_PARAMETER") view: View) {
+
+        val textField = findViewById<EditText>(R.id.inputEditText)
+
+        val msg = textField.text.toString()
+
+        // don't send empty messages
+        if (msg == "") return
+
+        // add msg to database
+        val id = chatDatabase.push().key.toString()
+        val message = ChatMessage(id, username, userColor, msg)
+        chatDatabase.child(id).setValue(message)
+
+        // clear text
+        textField.setText("")
+    }
+
+    // called on button press and shows alert to change username
     fun changeUsername(@Suppress("UNUSED_PARAMETER") view: View) {
 
         val userField = EditText(this)

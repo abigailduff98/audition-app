@@ -9,7 +9,6 @@ import android.net.Uri
 
 class AuditionReceiver : BroadcastReceiver() {
 
-
     override fun onReceive(context: Context, intent: Intent) {
 
         val openNoticeIntent = Intent(context, NoticeActivity::class.java)

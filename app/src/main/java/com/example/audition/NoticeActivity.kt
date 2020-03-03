@@ -72,8 +72,7 @@ class NoticeActivity : AppCompatActivity() {
         giraffeImageView.startAnimation(rotate)
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun switchLayout(view: View) {
+    fun switchLayout(@Suppress("UNUSED_PARAMETER") view: View) {
         if (noticeStatus == ACTIVE) {
             noticeStatus = INACTIVE
             setContentView(R.layout.activity_notice_inactive)
@@ -84,8 +83,7 @@ class NoticeActivity : AppCompatActivity() {
         animate()
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun openChat(view: View) {
+    fun openChat(@Suppress("UNUSED_PARAMETER") view: View) {
         val intent = Intent(
             this@NoticeActivity,
             ChatActivity::class.java
@@ -93,8 +91,7 @@ class NoticeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    @Suppress("UNUSED_PARAMETER")
-    fun setAlarm(view: View) {
+    fun setAlarm(@Suppress("UNUSED_PARAMETER") view: View) {
 
         // Get the AlarmManager Service
         val mAlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager

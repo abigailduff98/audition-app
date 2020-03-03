@@ -7,9 +7,7 @@ class ChatMessage {
     var msg: String? = null
 
     // empty constructor used for getting object from database
-    constructor() {
-
-    }
+    constructor() {}
 
     constructor(id: String, user: String, color: Int, msg: String) {
         this.id = id
